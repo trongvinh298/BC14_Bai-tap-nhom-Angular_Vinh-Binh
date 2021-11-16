@@ -1,44 +1,67 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Navbar</a>
+<div class="home__header">
+  <div class="container py-2">
+    <nav class="navbar navbar-expand-lg text-warning">
+      <a
+        class="navbar-brand text-warning"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        routerLink="/"
+        >ELearning</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <!-- Toggler/collapsibe Button -->
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#collapsibleNavbar"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-          routerLinkActive="active"
-          routerLink="/"
-          >Home</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/about"
-          >About</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/list-course"
-          >List Course</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/register"
-          >Register</a
-        >
-      </li>
-    </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link text-warning dropdown-toggle"
+              routerLinkActive="active"
+              routerLink="/list-course"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+            >
+              Danh sách khoá học
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ng-container *ngFor="let course of courseMenu">
+                <a class="dropdown-item" href="#">{{ course.maDanhMuc }}</a>
+                <div class="dropdown-divider"></div>
+              </ng-container>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2 text-dark"
+            type="search"
+            placeholder="Tìm khoá học"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-warning mr-2 my-2 my-sm-0"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+        <div>
+          <button class="btn btn-outline-warning mr-2 my-2 my-sm-0">
+            Đăng ký
+          </button>
+          <button class="btn btn-outline-warning mr-2 my-2 my-sm-0">
+            Đăng nhập
+          </button>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
+<div class="blank_header"></div>
