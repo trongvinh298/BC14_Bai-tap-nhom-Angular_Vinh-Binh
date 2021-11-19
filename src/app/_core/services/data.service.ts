@@ -33,57 +33,16 @@ export class DataService {
       })
     );
   }
+  delete(uri: any): Observable<any> {
+    const url = `${urlApi}/${uri}`;
 
-  // getListCourse(): Observable<any> {
-  //   const url =
-  //     'https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01';
-  //   return this.http.get(url).pipe(
-  //     tap(() => {}),
-  //     catchError((error: any) => {
-  //       return this.handleError(error);
-  //     })
-  //   );
-  // }
-
-  // getDetailCourse(id: any): Observable<any> {
-  //   const url = `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`;
-  //   return this.http.get(url).pipe(
-  //     tap(() => {}),
-  //     catchError((error: any) => {
-  //       return this.handleError(error);
-  //     })
-  //   );
-  // }
-
-  // registerUser(user: any): Observable<any> {
-  //   const url = `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy`;
-  //   return this.http.post(url, user).pipe(
-  //     tap(() => {}),
-  //     catchError((error: any) => {
-  //       return this.handleError(error);
-  //     })
-  //   );
-  // }
-
-  // login(user: any): Observable<any> {
-  //   const url = `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`;
-  //   return this.http.post(url, user).pipe(
-  //     tap(() => {}),
-  //     catchError((error: any) => {
-  //       return this.handleError(error);
-  //     })
-  //   );
-  // }
-
-  // addUser(user: any): Observable<any> {
-  //   const url = `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`;
-  //   return this.http.post(url, user).pipe(
-  //     tap(() => {}),
-  //     catchError((error: any) => {
-  //       return this.handleError(error);
-  //     })
-  //   );
-  // }
+    return this.http.delete(url).pipe(
+      tap(() => {}),
+      catchError((error: any) => {
+        return this.handleError(error);
+      })
+    );
+  }
 
   handleError(error: any) {
     switch (error.status) {

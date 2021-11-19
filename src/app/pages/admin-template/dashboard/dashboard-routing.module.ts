@@ -6,6 +6,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    children: [
+      //quan ly nguoi dung
+      {
+        path: 'quan-ly-nguoi-dung',
+        loadChildren: () =>
+          import('./quan-ly-nguoi-dung/quan-ly-nguoi-dung.module').then(
+            (m) => m.QuanLyNguoiDungModule
+          ),
+      },
+    ],
   },
 ];
 

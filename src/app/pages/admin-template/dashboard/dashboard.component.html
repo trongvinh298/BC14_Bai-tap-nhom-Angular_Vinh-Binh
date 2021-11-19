@@ -1,68 +1,53 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.value)">
-        <div class="form-group">
-          <label for="">Tai Khoan</label>
-          <input
-            type="text"
-            class="form-control"
-            name="taiKhoan"
-            ngModel
-            required
-            #TaiKhoan="ngModel"
-            minlength="7"
-            maxlength="15"
-          />
-          <div
-            class="alert alert-danger"
-            *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)"
-          >
-            <!-- Kiểm tra rỗng  -->
-            <div *ngIf="TaiKhoan.errors.required">Tai khoan k dc rong</div>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
+    >Elearing CyberSoft</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input
+    class="form-control form-control-dark w-100"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
 
-            <!-- Kiểm tra độ dài ký tư  -->
-            <div *ngIf="TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength">
-              Tai khoan phai tu 7-15 ky tu
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="">Mat khau</label>
-          <input type="text" class="form-control" name="matKhau" ngModel />
-        </div>
-        <div class="form-group">
-          <label for="">Ho Ten</label>
-          <input type="text" class="form-control" name="hoTen" ngModel />
-        </div>
-        <div class="form-group">
-          <label for="">So DT</label>
-          <input type="text" class="form-control" name="soDT" ngModel />
-        </div>
-        <div class="form-group">
-          <label for="">Email</label>
-          <input
-            type="text"
-            class="form-control"
-            name="email"
-            ngModel
-            required
-            #Email="ngModel"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          />
-          <div
-            class="alert alert-danger"
-            *ngIf="Email.errors && (Email.dirty || Email.touched)"
-          >
-            <!-- Kiểm tra rỗng  -->
-            <div *ngIf="Email.errors.required">Email k dc rong</div>
-            <div *ngIf="Email.errors.pattern">Email k dung dinh dang</div>
-          </div>
-        </div>
-        <button class="btn btn-success" [disabled]="!addUserForm.valid">
-          Add User
-        </button>
-      </form>
-    </div>
+<div class="container-fluid">
+  <div class="row">
+    <app-navbar-dashboard
+      class="col-md-3 col-lg-2 d-md-block"
+    ></app-navbar-dashboard>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div
+        class="
+          d-flex
+          justify-content-between
+          flex-wrap flex-md-nowrap
+          align-items-center
+          pt-3
+          pb-2
+          mb-3
+          border-bottom
+        "
+      >
+        <h1 class="h2">Dashboard</h1>
+      </div>
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </div>

@@ -22,6 +22,7 @@ export class AuthComponent implements OnInit {
       } else {
         alert('Tai khoan k co quyen truy cap');
       }
+      console.log(result);
     });
   }
 }

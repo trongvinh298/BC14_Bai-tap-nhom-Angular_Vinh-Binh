@@ -1,0 +1,38 @@
+<button class="btn btn-success">Thêm người dùng</button>
+
+<div class="form-group">
+  <label for=""></label>
+  <input type="text" name="" id="" class="form-control" />
+</div>
+<button mat-raised-button color="accent">Tìm</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tài khoản</th>
+      <th scope="col">Email</th>
+      <th scope="col">Họ tên</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="listUser">
+      <tr *ngFor="let user of listUser; let stt = index">
+        <th scope="row">{{ stt + 1 }}</th>
+        <td>{{ user.taiKhoan }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.hoTen }}</td>
+        <td>{{ user.soDt }}</td>
+        <td>
+          <button mat-button color="primary">Ghi danh</button>
+          <button mat-button color="accent">Sửa</button>
+          <button mat-button color="warn" (click)="deleteUser(user)">
+            Xoá
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
