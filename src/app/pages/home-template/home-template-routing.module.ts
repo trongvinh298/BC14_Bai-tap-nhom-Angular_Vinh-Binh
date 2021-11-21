@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       //list course
       {
-        path: 'list-course',
+        path: 'list-course/:maDanhMuc',
         loadChildren: () =>
           import('./list-course/list-course.module').then(
             (m) => m.ListCourseModule
