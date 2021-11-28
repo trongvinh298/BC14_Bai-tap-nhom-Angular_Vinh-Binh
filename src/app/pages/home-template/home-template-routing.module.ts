@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       //list course
       {
-        path: 'list-course',
+        path: 'list-course/:maDanhMuc',
         loadChildren: () =>
           import('./list-course/list-course.module').then(
             (m) => m.ListCourseModule
@@ -41,6 +41,12 @@ const routes: Routes = [
         path: 'register',
         loadChildren: () =>
           import('./register/register.module').then((m) => m.RegisterModule),
+      },
+      //login
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./login/login.module').then((m) => m.LoginModule),
       },
     ],
   },

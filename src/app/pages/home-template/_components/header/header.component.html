@@ -22,17 +22,19 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link text-warning dropdown-toggle"
-              routerLinkActive="active"
-              routerLink="/list-course"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
             >
-              Danh sách khoá học
+              Danh mục khoá học
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <ng-container *ngFor="let course of courseMenu">
-                <a class="dropdown-item" href="#">{{ course.maDanhMuc }}</a>
+                <a
+                  class="dropdown-item"
+                  href="/list-course/{{ course.maDanhMuc }}"
+                  >{{ course.maDanhMuc }}</a
+                >
                 <div class="dropdown-divider"></div>
               </ng-container>
             </div>
@@ -53,10 +55,16 @@
           </button>
         </form>
         <div>
-          <button class="btn btn-outline-warning mr-2 my-2 my-sm-0">
+          <button
+            class="btn btn-outline-warning mr-2 my-2 my-sm-0"
+            [routerLink]="'/register'"
+          >
             Đăng ký
           </button>
-          <button class="btn btn-outline-warning mr-2 my-2 my-sm-0">
+          <button
+            class="btn btn-outline-warning mr-2 my-2 my-sm-0"
+            [routerLink]="'/login'"
+          >
             Đăng nhập
           </button>
         </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '@services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,30 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  info: string = 'Cybersoft';
-  people: any = {
-    username: 'Vinh',
-    age: 28,
-  };
-  array: any = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-  number: number = 0.259;
-
-  inputValue: string = '';
-
-  constructor() {
-    console.log('constructor');
-  }
-  ngOnChanges() {
-    console.log('ngOnChanges');
-  }
+  listCourse: any = [];
+  subListCourse: any = new Subscription();
+  constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    console.log('ngOnInit');
+    this.getHomeCourse();
   }
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit');
+
+  getHomeCourse() {
+    this.subListCourse = this.data
+      .get(
+        '/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=1&pageSize=8&MaNhom=GP09'
+      )
+      .subscribe((result: any) => {
+        console.log('result', result.items);
+        this.listCourse = result.items;
+      });
   }
+
   ngOnDestroy() {
-    console.log('ngOnDestroy');
+    this.subListCourse.unsubscribe();
   }
 }

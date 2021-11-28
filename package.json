@@ -20,13 +20,23 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+<<<<<<< HEAD
     "@ckeditor/ckeditor5-angular": "^2.0.2",
     "@ckeditor/ckeditor5-build-classic": "^31.0.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+=======
+    "@fontawesome/angular-fontawesome": "^0.10.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.6.0",
+    "ngx-slick-carousel": "^0.5.1",
+>>>>>>> master
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
+    "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
