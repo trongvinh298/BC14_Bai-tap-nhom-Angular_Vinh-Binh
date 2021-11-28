@@ -9,6 +9,7 @@ import { DataService } from 'src/app/_core/services/data.service';
 })
 export class DetailCourseComponent implements OnInit {
   id: any;
+  detailCourse: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,7 +27,7 @@ export class DetailCourseComponent implements OnInit {
 
     //Lấy nhiều params từ url
     this.activatedRoute.queryParams.subscribe((params: any) => {
-      console.log(params);
+      // console.log(params);
     });
   }
 
@@ -35,6 +36,11 @@ export class DetailCourseComponent implements OnInit {
       .get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${this.id}`)
       .subscribe((result) => {
         console.log(result);
+
+        this.detailCourse = result;
       });
+  }
+  courseRegister() {
+    console.log(this.detailCourse.maKhoaHoc);
   }
 }

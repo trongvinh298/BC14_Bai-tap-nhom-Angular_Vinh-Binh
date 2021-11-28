@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     this.subCourseMenue = this.data
       .get('/QuanLyKhoaHoc/LayDanhMucKhoaHoc')
       .subscribe((result: any) => {
-        console.log(result);
         this.courseMenu = result;
       });
   }

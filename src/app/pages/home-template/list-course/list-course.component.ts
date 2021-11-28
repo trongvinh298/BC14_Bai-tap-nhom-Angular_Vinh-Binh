@@ -26,6 +26,7 @@ export class ListCourseComponent implements OnInit {
   getParamsFromUrl() {
     // Lấy 1 param từ url
     this.maDanhMuc = this.activatedRoute.snapshot.paramMap.get('maDanhMuc');
+    console.log(this.maDanhMuc);
   }
 
   getCourse() {

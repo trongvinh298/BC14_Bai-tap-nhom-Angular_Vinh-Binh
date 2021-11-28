@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="row">
+  <h3 class="text-warning py-3">Đăng ký khoá học</h3>
+  <div class="row mt-3">
     <div class="col-md-12">
       <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
         <div class="form-group">
-          <label for="">Tai Khoan</label>
+          <label for="">Tài khoản</label>
           <input
             type="text"
             class="form-control"
@@ -19,25 +20,78 @@
             *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)"
           >
             <!-- Kiểm tra rỗng  -->
-            <div *ngIf="TaiKhoan.errors.required">Tai khoan k dc rong</div>
+            <div *ngIf="TaiKhoan.errors.required">
+              Tài khoản không được trống
+            </div>
 
             <!-- Kiểm tra độ dài ký tư  -->
             <div *ngIf="TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength">
-              Tai khoan phai tu 7-15 ky tu
+              Tài khoản phải từ 7-15 ký tự
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="">Mat khau</label>
-          <input type="text" class="form-control" name="matKhau" ngModel />
+          <label for="">Mật khẩu</label>
+          <input
+            type="password"
+            class="form-control"
+            name="matKhau"
+            ngModel
+            required
+            #MatKhau="ngModel"
+            minlength="6"
+            maxlength="8"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="MatKhau.errors && (MatKhau.dirty || MatKhau.touched)"
+          >
+            <!-- Kiểm tra rỗng  -->
+            <div *ngIf="MatKhau.errors.required">Mật khẩu không được trống</div>
+
+            <!-- Kiểm tra độ dài ký tư  -->
+            <div *ngIf="MatKhau.errors.minlength || MatKhau.errors.maxlength">
+              Mật khẩu phải từ 6-8 ký tự
+            </div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="">Ho Ten</label>
-          <input type="text" class="form-control" name="hoTen" ngModel />
+          <label for="">Họ tên</label>
+          <input
+            type="text"
+            class="form-control"
+            name="hoTen"
+            ngModel
+            required
+            #HoTen="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="HoTen.errors && (HoTen.dirty || HoTen.touched)"
+          >
+            <!-- Kiểm tra rỗng  -->
+            <div *ngIf="HoTen.errors.required">Họ tên không được trống</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="">So DT</label>
-          <input type="text" class="form-control" name="soDT" ngModel />
+          <label for="">Số điện thoại</label>
+          <input
+            type="text"
+            class="form-control"
+            name="soDT"
+            ngModel
+            required
+            #SoDT="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="SoDT.errors && (SoDT.dirty || SoDT.touched)"
+          >
+            <!-- Kiểm tra rỗng  -->
+            <div *ngIf="SoDT.errors.required">
+              Số điện thoại không được trống
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Email</label>
@@ -55,12 +109,12 @@
             *ngIf="Email.errors && (Email.dirty || Email.touched)"
           >
             <!-- Kiểm tra rỗng  -->
-            <div *ngIf="Email.errors.required">Email k dc rong</div>
-            <div *ngIf="Email.errors.pattern">Email k dung dinh dang</div>
+            <div *ngIf="Email.errors.required">Email không được trống</div>
+            <div *ngIf="Email.errors.pattern">Email không đúng định dạng</div>
           </div>
         </div>
         <button class="btn btn-success" [disabled]="!registerForm.valid">
-          Register
+          Đăng ký
         </button>
       </form>
     </div>
