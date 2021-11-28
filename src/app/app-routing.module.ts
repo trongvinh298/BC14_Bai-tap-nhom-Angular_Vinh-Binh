@@ -11,6 +11,15 @@ const routes: Routes = [
       ),
   },
 
+  //login - localhost:4200/login
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/home-template/login/login.module').then(
+        (m) => m.LoginModule
+      ),
+  },
+
   //admin template - localhost:4200/admin
   {
     path: 'admin',
