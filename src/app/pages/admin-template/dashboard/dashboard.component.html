@@ -13,15 +13,10 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input
-    class="form-control form-control-dark w-100"
-    type="text"
-    placeholder="Search"
-    aria-label="Search"
-  />
+  <span class="text-light ml-auto">Chào! {{ userLogin.hoTen }}</span>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+      <button class="btn btn-danger" (click)="logOut()">Sign out</button>
     </li>
   </ul>
 </nav>

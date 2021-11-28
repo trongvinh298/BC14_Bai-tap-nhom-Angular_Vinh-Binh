@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/_core/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,17 +7,16 @@ import { DataService } from 'src/app/_core/services/data.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private data: DataService) {}
-
-  ngOnInit(): void {}
-
-  addUser(user: any) {
-    user.maLoaiNguoiDung = 'HV';
-    user.maNhom = 'GP01';
-    this.data
-      .post('/QuanLyNguoiDung/ThemNguoiDung', user)
-      .subscribe((result) => {
-        console.log(result);
-      });
+  constructor(private router: Router) {}
+  userLogin: any;
+  ngOnInit(): void {
+    let obj: any = localStorage.getItem('UserAdmin');
+    this.userLogin = JSON.parse(obj);
+    console.log(this.userLogin.hoTen);
+  }
+  logOut() {
+    this.router.navigate(['/auth']);
+    localStorage.clear();
+    console.log('Log out thanh cong');
   }
 }

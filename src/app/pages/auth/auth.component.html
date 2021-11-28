@@ -10,8 +10,6 @@
           ngModel
           required
           #TaiKhoan="ngModel"
-          minlength="7"
-          maxlength="15"
         />
         <div
           class="alert alert-danger"
@@ -19,11 +17,6 @@
         >
           <!-- Kiểm tra rỗng  -->
           <div *ngIf="TaiKhoan.errors.required">Tai khoan k dc rong</div>
-
-          <!-- Kiểm tra độ dài ký tư  -->
-          <div *ngIf="TaiKhoan.errors.minlength || TaiKhoan.errors.maxlength">
-            Tai khoan phai tu 7-15 ky tu
-          </div>
         </div>
         <div class="form-group">
           <label for="">Mat khau</label>

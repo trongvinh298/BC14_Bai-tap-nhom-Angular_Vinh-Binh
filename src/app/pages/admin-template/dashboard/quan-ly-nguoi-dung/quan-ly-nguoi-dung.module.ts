@@ -5,14 +5,18 @@ import { QuanLyNguoiDungRoutingModule } from './quan-ly-nguoi-dung-routing.modul
 import { QuanLyNguoiDungComponent } from './quan-ly-nguoi-dung.component';
 import { MaterialModule } from 'src/app/_core/shares/share-module/material-module';
 import { ShareModuleModule } from 'src/app/_core/shares/share-module/share-module.module';
+import { ModalThemNguoiDungComponent } from './modal-them-nguoi-dung/modal-them-nguoi-dung.component';
+import { FormsModule } from '@angular/forms';
+import { ModalSuaNguoiDungComponent } from './modal-sua-nguoi-dung/modal-sua-nguoi-dung.component';
 
 @NgModule({
-  declarations: [QuanLyNguoiDungComponent],
+  declarations: [QuanLyNguoiDungComponent, ModalThemNguoiDungComponent, ModalSuaNguoiDungComponent],
   imports: [
     CommonModule,
     QuanLyNguoiDungRoutingModule,
     ShareModuleModule,
     MaterialModule,
+    FormsModule,
   ],
 })
 export class QuanLyNguoiDungModule {}

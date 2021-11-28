@@ -1,0 +1,110 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="suaNguoiDung"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Cập nhật thông tin người dùng
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          #closeModal
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editUserForm="ngForm" (ngSubmit)="editUser(editUserForm.value)">
+          <div class="form-group">
+            <label for="">Tài Khoản</label>
+            <input
+              type="text"
+              class="form-control"
+              name="taiKhoan"
+              #TaiKhoan="ngModel"
+              [ngModel]="selectedUser?.taiKhoan"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Mật Khẩu</label>
+            <input
+              type="text"
+              class="form-control"
+              name="matKhau"
+              [ngModel]="selectedUser?.matKhau"
+              #MatKhau
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Họ Tên</label>
+            <input
+              type="text"
+              class="form-control"
+              name="hoTen"
+              [ngModel]="selectedUser?.hoTen"
+              #HoTen
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Số Điện Thoại</label>
+            <input
+              type="text"
+              class="form-control"
+              name="soDT"
+              [ngModel]="selectedUser?.soDt"
+              #SoDT
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              [ngModel]="selectedUser?.email"
+              #Email="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="">Loại người dùng</label>
+            <select
+              class="form-control"
+              name="maLoaiNguoiDung"
+              [ngModel]="selectedUser?.maLoaiNguoiDung"
+              #MaLoaiNguoiDung
+            >
+              <option value="GV">GIÁO VỤ</option>
+              <option value="HV">HỌC VIÊN</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!editUserForm.valid"
+          >
+            Cập nhật
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary ml-2"
+            data-dismiss="modal"
+          >
+            Đóng
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
