@@ -1,38 +1,93 @@
-<button class="btn btn-success">Thêm người dùng</button>
+<button
+  class="btn btn-success"
+  data-toggle="modal"
+  data-target="#themNguoiDung"
+>
+  Thêm người dùng
+</button>
 
 <div class="form-group">
   <label for=""></label>
-  <input type="text" name="" id="" class="form-control" />
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="searchName"
+    placeholder="Nhập vào tên người dùng"
+    #searchValue
+  />
 </div>
-<button mat-raised-button color="accent">Tìm</button>
+<button mat-raised-button color="accent" (click)="findUser(searchName)" #search>
+  Tìm
+</button>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">STT</th>
-      <th scope="col">Tài khoản</th>
-      <th scope="col">Email</th>
-      <th scope="col">Họ tên</th>
-      <th scope="col">Số điện thoại</th>
-      <th scope="col">Thao tác</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngIf="listUser">
-      <tr *ngFor="let user of listUser; let stt = index">
-        <th scope="row">{{ stt + 1 }}</th>
-        <td>{{ user.taiKhoan }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.hoTen }}</td>
-        <td>{{ user.soDt }}</td>
-        <td>
-          <button mat-button color="primary">Ghi danh</button>
-          <button mat-button color="accent">Sửa</button>
-          <button mat-button color="warn" (click)="deleteUser(user)">
-            Xoá
-          </button>
-        </td>
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tài khoản</th>
+        <th scope="col">Email</th>
+        <th scope="col">Họ tên</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Thao tác</th>
       </tr>
-    </ng-container>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="searchListUser.length != 0; else elseBlock">
+        <tr *ngFor="let user of searchListUser; let stt = index">
+          <th scope="row">{{ stt + 1 }}</th>
+          <td>{{ user.taiKhoan }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.hoTen }}</td>
+          <td>{{ user.soDt }}</td>
+          <td>
+            <button mat-button color="primary">Ghi danh</button>
+            <button
+              mat-button
+              color="accent"
+              data-toggle="modal"
+              data-target="#suaNguoiDung"
+              (click)="updateForm(user.taiKhoan)"
+            >
+              Sửa
+            </button>
+            <button mat-button color="warn" (click)="deleteUser(user)">
+              Xoá
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #elseBlock>
+        <tr *ngFor="let user of listUser; let stt = index">
+          <th scope="row">{{ stt + 1 }}</th>
+          <td>{{ user.taiKhoan }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.hoTen }}</td>
+          <td>{{ user.soDt }}</td>
+          <td>
+            <button mat-button color="primary">Ghi danh</button>
+            <button
+              mat-button
+              color="accent"
+              data-toggle="modal"
+              data-target="#suaNguoiDung"
+              (click)="updateForm(user.taiKhoan)"
+            >
+              Sửa
+            </button>
+            <button mat-button color="warn" (click)="deleteUser(user)">
+              Xoá
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
+
+<app-modal-them-nguoi-dung
+  (userListUpdated)="ngOnInit()"
+></app-modal-them-nguoi-dung>
+<app-modal-sua-nguoi-dung
+  (userListUpdated)="ngOnInit()"
+></app-modal-sua-nguoi-dung>

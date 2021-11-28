@@ -15,6 +15,15 @@ const routes: Routes = [
             (m) => m.QuanLyNguoiDungModule
           ),
       },
+
+      //quan ly khoa hoc
+      {
+        path: 'quan-ly-khoa-hoc',
+        loadChildren: () =>
+          import('./quan-ly-khoa-hoc/quan-ly-khoa-hoc.module').then(
+            (m) => m.QuanLyKhoaHocModule
+          ),
+      },
     ],
   },
 ];

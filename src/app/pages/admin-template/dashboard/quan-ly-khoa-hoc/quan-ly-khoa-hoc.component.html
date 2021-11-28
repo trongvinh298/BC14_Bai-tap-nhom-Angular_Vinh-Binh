@@ -1,0 +1,127 @@
+<button class="btn btn-success" data-toggle="modal" data-target="#themKhoaHoc">
+  Thêm khoá học
+</button>
+
+<div class="form-group">
+  <label for=""></label>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="searchName"
+    placeholder="Nhập vào tên khoá học"
+    #searchValue
+  />
+</div>
+<button
+  mat-raised-button
+  color="accent"
+  (click)="findCourse(searchName)"
+  #search
+>
+  Tìm
+</button>
+
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col-1">STT</th>
+        <th scope="col-2">Mã Khoá Học</th>
+        <th style="width: 15%" scope="col-2">Tên Khoá Học</th>
+        <th style="width: 15%" scope="col-2">Hình Ảnh</th>
+        <th scope="col-1">Lượt xem</th>
+        <th scope="col-1">Người tạo</th>
+        <th scope="col-3">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="searchListCourse.length != 0; else elseBlock">
+        <tr *ngFor="let course of searchListCourse; let stt = index">
+          <th scope="row">{{ stt + 1 }}</th>
+          <td>{{ course.maKhoaHoc }}</td>
+          <td>{{ course.tenKhoaHoc }}</td>
+          <td>
+            <img class="w-100" src="{{ course.hinhAnh }}" />
+          </td>
+          <td>{{ course.luotXem }}</td>
+          <td>{{ course.nguoiTao.hoTen }}</td>
+
+          <td>
+            <button
+              mat-button
+              color="primary"
+              data-toggle="modal"
+              data-target="#ghiDanh"
+              (click)="getCourseID(course)"
+            >
+              Ghi danh
+            </button>
+            <button
+              mat-button
+              color="accent"
+              data-toggle="modal"
+              data-target="#suaKhoaHoc"
+              (click)="updateForm(course.maKhoaHoc)"
+            >
+              Sửa
+            </button>
+            <button mat-button color="warn" (click)="deleteCourse(course)">
+              Xoá
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #elseBlock>
+        <tr *ngFor="let course of listCourse; let stt = index">
+          <th scope="row">{{ stt + 1 }}</th>
+          <td>{{ course.maKhoaHoc }}</td>
+          <td>{{ course.tenKhoaHoc }}</td>
+          <td>
+            <img class="w-100" src="{{ course.hinhAnh }}" />
+          </td>
+          <td>{{ course.luotXem }}</td>
+          <td>{{ course.nguoiTao.hoTen }}</td>
+
+          <td>
+            <button
+              mat-button
+              color="primary"
+              data-toggle="modal"
+              data-target="#ghiDanh"
+              (click)="getCourseID(course)"
+            >
+              Ghi danh
+            </button>
+            <button
+              mat-button
+              color="accent"
+              data-toggle="modal"
+              data-target="#suaKhoaHoc"
+              (click)="updateForm(course.maKhoaHoc)"
+            >
+              Sửa
+            </button>
+            <button mat-button color="warn" (click)="deleteCourse(course)">
+              Xoá
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
+
+<app-modal-them-khoa-hoc
+  (courseListUpdated)="ngOnInit()"
+  (courseSearchUpdated)="findCourse(searchName)"
+></app-modal-them-khoa-hoc>
+
+<app-modal-sua-khoa-hoc
+  (courseListUpdated)="ngOnInit()"
+  (courseSearchUpdated)="findCourse(searchName)"
+>
+</app-modal-sua-khoa-hoc>
+
+<app-modal-ghi-danh-nguoi-dung
+  [selectedCourseID]="selectedCourseID"
+></app-modal-ghi-danh-nguoi-dung>
