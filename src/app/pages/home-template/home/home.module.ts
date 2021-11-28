@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { ShareModuleModule } from 'src/app/_core/shares/share-module/share-module.module';
 import { MaterialModule } from 'src/app/_core/shares/share-module/material-module';
 import { CourseComponent } from './course/course.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [HomeComponent, CourseComponent],
+  declarations: [HomeComponent, CourseComponent, ModalComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

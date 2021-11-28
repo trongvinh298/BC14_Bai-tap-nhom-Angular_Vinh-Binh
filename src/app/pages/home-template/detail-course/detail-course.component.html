@@ -1,1 +1,29 @@
-<p>detail-course works!</p>
+<div class="container">
+  <div class="d-flex">
+    <h3 class="text-warning d-block mx-auto pt-3">
+      Chi tiết khoá học - {{ detailCourse.tenKhoaHoc }}
+    </h3>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <img src="{{ detailCourse.hinhAnh }}" alt="{{ detailCourse.hinhAnh }}" />
+    </div>
+    <div class="col-6">
+      <div class="card text-left">
+        <div class="card-body">
+          <h4 class="card-title">{{ detailCourse.tenKhoaHoc }}</h4>
+          <p class="card-text">{{ detailCourse.moTa }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Lượt xem : {{ detailCourse.luotXem }}</span>
+            <button class="btn btn-success" (click)="courseRegister()">
+              Đăng ký
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
