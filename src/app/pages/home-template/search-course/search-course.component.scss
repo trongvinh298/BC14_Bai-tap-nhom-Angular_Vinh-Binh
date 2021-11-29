@@ -1,0 +1,18 @@
+.course {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  min-height: 250px;
+}
+.course img {
+  height: 250px;
+}
+.course-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.course-body-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

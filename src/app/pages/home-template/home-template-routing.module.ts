@@ -27,6 +27,14 @@ const routes: Routes = [
             (m) => m.ListCourseModule
           ),
       },
+      //search course
+      {
+        path: 'search-course/:tenKhoaHoc',
+        loadChildren: () =>
+          import('./search-course/search-course.module').then(
+            (m) => m.SearchCourseModule
+          ),
+      },
       //detail course
       {
         path: 'detail/:id',

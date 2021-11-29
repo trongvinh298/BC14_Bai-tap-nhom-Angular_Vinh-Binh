@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-warning py-3">Đăng ký khoá học</h3>
+  <h3 class="text-warning py-3">Đăng ký tài khoản</h3>
   <div class="row mt-3">
     <div class="col-md-12">
       <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
@@ -113,7 +113,11 @@
             <div *ngIf="Email.errors.pattern">Email không đúng định dạng</div>
           </div>
         </div>
-        <button class="btn btn-success" [disabled]="!registerForm.valid">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!registerForm.valid"
+        >
           Đăng ký
         </button>
       </form>

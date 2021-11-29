@@ -40,18 +40,26 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form
+          #searchCourseForm="ngForm"
+          (ngSubmit)="searchCourse(searchCourseForm.value)"
+          class="form-inline my-2 my-lg-0"
+        >
           <input
             class="form-control mr-sm-2 text-dark"
             type="search"
+            name="tenKhoaHoc"
+            ngModel
             placeholder="Tìm khoá học"
             aria-label="Search"
+            required
           />
           <button
             class="btn btn-outline-warning mr-2 my-2 my-sm-0"
             type="submit"
+            [disabled]="!searchCourseForm.valid"
           >
-            Search
+            Tìm kiếm
           </button>
         </form>
         <div>
