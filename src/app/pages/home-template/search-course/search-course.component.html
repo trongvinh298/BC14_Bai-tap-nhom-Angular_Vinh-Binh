@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="text-primary pt-5">
+    Tìm thấy {{ searchCourseList.length }} khoá học "{{ searchValue }}"
+  </div>
+
+  <ng-container *ngIf="searchCourseList.length !== 0">
+    <div class="row">
+      <div
+        class="course col-12 row my-3 py-3"
+        *ngFor="let course of searchCourseList"
+      >
+        <img class="col-3" src="{{ course.hinhAnh }}" alt="Card image cap" />
+        <div class="col-9 course-body">
+          <div class="course-body-top">
+            <h5 class="card-title">{{ course.tenKhoaHoc }}</h5>
+            <p class="card-text">
+              {{ course.moTa }}
+            </p>
+          </div>
+          <div class="course-body-bottom">
+            <a
+              routerLink="/detail/{{ course.maKhoaHoc }}"
+              class="btn btn-primary mr-2"
+              >Chi tiết</a
+            ><span>Số lượng học viên: {{ course.soLuongHocVien }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

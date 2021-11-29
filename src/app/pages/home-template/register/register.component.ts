@@ -13,10 +13,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
   register(user: any) {
     user.maNhom = 'GP01';
-    this.data.post('/QuanLyNguoiDung/DangKy', user).subscribe((result) => {
-      console.log(result);
-    });
-    alert('Đăng ký thành công');
+    this.data.post('/QuanLyNguoiDung/DangKy', user).subscribe(
+      (result) => {
+        console.log(result);
+        alert('Đăng ký thành công');
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
   }
 
   @HostListener('window:beforeunload', ['$event'])
