@@ -8,9 +8,10 @@ import { ShareModuleModule } from 'src/app/_core/shares/share-module/share-modul
 import { ModalThemNguoiDungComponent } from './modal-them-nguoi-dung/modal-them-nguoi-dung.component';
 import { FormsModule } from '@angular/forms';
 import { ModalSuaNguoiDungComponent } from './modal-sua-nguoi-dung/modal-sua-nguoi-dung.component';
+import { ModalGhiDanhKhoaHocComponent } from './modal-ghi-danh-khoa-hoc/modal-ghi-danh-khoa-hoc.component';
 
 @NgModule({
-  declarations: [QuanLyNguoiDungComponent, ModalThemNguoiDungComponent, ModalSuaNguoiDungComponent],
+  declarations: [QuanLyNguoiDungComponent, ModalThemNguoiDungComponent, ModalSuaNguoiDungComponent, ModalGhiDanhKhoaHocComponent],
   imports: [
     CommonModule,
     QuanLyNguoiDungRoutingModule,

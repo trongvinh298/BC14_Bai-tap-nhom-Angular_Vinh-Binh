@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     }
 
     //Chua login - chuyen huong ve auth
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/login']);
     return false;
   }
 }

@@ -58,7 +58,6 @@ export class ModalThemKhoaHocComponent implements OnInit {
   }
   getCategory() {
     this.data.get('QuanLyKhoaHoc/LayDanhMucKhoaHoc').subscribe((result) => {
-      console.log(result);
       this.courseCategory = result;
     });
   }

@@ -17,6 +17,10 @@ export class QuanLyNguoiDungComponent implements OnInit {
 
   listUser: any = [];
   searchListUser: any = [];
+  selectedUserID: any = {
+    maKhoaHoc: '',
+    taiKhoan: '',
+  };
 
   subListUser: any = new Subscription();
 

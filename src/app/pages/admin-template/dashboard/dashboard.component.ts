@@ -12,11 +12,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     let obj: any = localStorage.getItem('UserAdmin');
     this.userLogin = JSON.parse(obj);
-    console.log(this.userLogin.hoTen);
+    // console.log(this.userLogin.hoTen);
   }
   logOut() {
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/login']);
     localStorage.clear();
-    console.log('Log out thanh cong');
   }
 }

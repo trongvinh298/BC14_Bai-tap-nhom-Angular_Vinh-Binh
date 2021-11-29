@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="ghiDanh"
+  id="ghiDanh1"
   tabindex="-1"
   role="dialog"
   aria-labelledby="exampleModalLabel"
@@ -33,27 +33,27 @@
           <div class="form-group col-10">
             <select
               class="form-control"
-              name="taiKhoan"
+              name="maKhoaHoc"
               ngModel
-              #TaiKhoan="ngModel"
+              #MaKhoaHoc="ngModel"
               required
             >
-              <ng-container *ngIf="unregisterUserList">
+              <ng-container *ngIf="unregisterCourseList">
                 <option
-                  *ngFor="let item of unregisterUserList"
-                  value="{{ item.taiKhoan }}"
+                  *ngFor="let item of unregisterCourseList"
+                  value="{{ item.maKhoaHoc }}"
                 >
-                  {{ item.hoTen }}
+                  {{ item.tenKhoaHoc }}
                 </option>
               </ng-container>
             </select>
             <div
               class="alert alert-danger"
-              *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)"
+              *ngIf="MaKhoaHoc.errors && (MaKhoaHoc.dirty || MaKhoaHoc.touched)"
             >
               <!-- Kiểm tra rỗng  -->
-              <div *ngIf="TaiKhoan.errors.required">
-                Vui lòng chọn người dùng
+              <div *ngIf="MaKhoaHoc.errors.required">
+                Vui lòng chọn khoá học
               </div>
             </div>
           </div>
@@ -67,35 +67,38 @@
           </button>
         </form>
         <hr />
-        <ng-container *ngIf="waitingApprovalUserList.length !== 0">
-          <div class="text-danger">Học viên chờ xác thực</div>
+        <ng-container *ngIf="waitingApprovalCourseList.length !== 0">
+          <div class="text-danger">Khoá học chờ xác thực</div>
           <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Tài Khoản</th>
-                <th scope="col">Họ tên</th>
+                <th scope="col">Tên Khoá Học</th>
                 <th scope="col">Chờ xác nhận</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of waitingApprovalUserList; let stt = index">
+              <tr
+                *ngFor="
+                  let course of waitingApprovalCourseList;
+                  let stt = index
+                "
+              >
                 <th scope="row">{{ stt + 1 }}</th>
-                <td>{{ user.taiKhoan }}</td>
-                <td>{{ user.hoTen }}</td>
+                <td>{{ course.tenKhoaHoc }}</td>
 
                 <td>
                   <button
                     mat-button
                     color="primary"
-                    (click)="approveUser(user.taiKhoan)"
+                    (click)="approveCourse(course.maKhoaHoc)"
                   >
                     Xác thực
                   </button>
                   <button
                     mat-button
                     color="accent"
-                    (click)="unApproveUser(user.taiKhoan)"
+                    (click)="unApproveCourse(course.maKhoaHoc)"
                   >
                     Huỷ
                   </button>
@@ -106,27 +109,24 @@
           <hr />
         </ng-container>
         <ng-container *ngIf="approvedUserList.length !== 0">
-          <div class="text-danger">Học viên đã tham gia khoá học</div>
+          <div class="text-danger">Khoá Học Đã Ghi Danh</div>
           <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Tài Khoản</th>
-                <th scope="col">Họ tên</th>
+                <th scope="col">Tên Khoá Học</th>
                 <th scope="col">Chờ xác nhận</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of approvedUserList; let stt = index">
+              <tr *ngFor="let course of approvedUserList; let stt = index">
                 <th scope="row">{{ stt + 1 }}</th>
-                <td>{{ user.taiKhoan }}</td>
-                <td>{{ user.hoTen }}</td>
-
+                <td>{{ course.tenKhoaHoc }}</td>
                 <td>
                   <button
                     mat-button
                     color="accent"
-                    (click)="unApproveUser(user.taiKhoan)"
+                    (click)="unApproveCourse(course.maKhoaHoc)"
                   >
                     Huỷ
                   </button>
