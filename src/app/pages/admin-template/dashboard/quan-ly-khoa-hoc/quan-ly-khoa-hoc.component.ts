@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '@services/data.service';
 import { Subscription } from 'rxjs';
+import { ModalGhiDanhNguoiDungComponent } from './modal-ghi-danh-nguoi-dung/modal-ghi-danh-nguoi-dung.component';
 import { ModalSuaKhoaHocComponent } from './modal-sua-khoa-hoc/modal-sua-khoa-hoc.component';
 
 @Component({
@@ -13,6 +14,8 @@ export class QuanLyKhoaHocComponent implements OnInit {
   modalSuaKhoaHoc: ModalSuaKhoaHocComponent = new ModalSuaKhoaHocComponent(
     this.data
   );
+  @ViewChild(ModalGhiDanhNguoiDungComponent) modalGhiDanhNguoiDung =
+    new ModalGhiDanhNguoiDungComponent(this.data);
   @ViewChild('search') search: any;
   @ViewChild('searchValue') searchValue: any;
 
@@ -37,7 +40,6 @@ export class QuanLyKhoaHocComponent implements OnInit {
       .get('QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01')
       .subscribe(
         (result: any) => {
-          console.log(result);
           this.listCourse = result;
         },
         (err) => {
@@ -74,6 +76,7 @@ export class QuanLyKhoaHocComponent implements OnInit {
   getCourseID(course: any) {
     this.selectedCourseID.maKhoaHoc = course.maKhoaHoc;
     console.log(this.selectedCourseID);
+    this.modalGhiDanhNguoiDung.ngOnInit();
   }
 
   ngOnDestroy() {

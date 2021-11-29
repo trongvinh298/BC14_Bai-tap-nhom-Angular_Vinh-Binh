@@ -67,7 +67,6 @@ export class ModalSuaKhoaHocComponent implements OnInit {
 
   getCategory() {
     this.data.get('QuanLyKhoaHoc/LayDanhMucKhoaHoc').subscribe((result) => {
-      console.log(result);
       this.courseCategory = result;
     });
   }
@@ -75,7 +74,6 @@ export class ModalSuaKhoaHocComponent implements OnInit {
     this.data
       .get('QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01')
       .subscribe((result) => {
-        console.log(result);
         this.courseCreator = result;
       });
   }

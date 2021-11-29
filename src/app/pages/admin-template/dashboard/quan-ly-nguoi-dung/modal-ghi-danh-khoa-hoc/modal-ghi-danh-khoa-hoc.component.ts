@@ -1,18 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '@services/data.service';
 
 @Component({
-  selector: 'app-modal-ghi-danh-nguoi-dung',
-  templateUrl: './modal-ghi-danh-nguoi-dung.component.html',
-  styleUrls: ['./modal-ghi-danh-nguoi-dung.component.scss'],
+  selector: 'app-modal-ghi-danh-khoa-hoc',
+  templateUrl: './modal-ghi-danh-khoa-hoc.component.html',
+  styleUrls: ['./modal-ghi-danh-khoa-hoc.component.scss'],
 })
-export class ModalGhiDanhNguoiDungComponent implements OnInit {
-  @Input() selectedCourseID: any;
+export class ModalGhiDanhKhoaHocComponent implements OnInit {
+  @Input() selectedUserID: any;
 
   constructor(private data: DataService) {}
 
-  unregisterUserList: any = [];
-  waitingApprovalUserList: any = [];
+  unregisterCourseList: any = [];
+  waitingApprovalCourseList: any = [];
   approvedUserList: any = [];
 
   registerData: any = {
@@ -27,23 +27,23 @@ export class ModalGhiDanhNguoiDungComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUnregisterList();
-    this.getWaitingApprovalUserList();
-    this.getApprovedUserList();
+    this.getWaitingApprovalCourseList();
+    this.getApprovedCourseList();
   }
 
   getUnregisterList() {
     this.data
       .post(
-        'QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh',
-        this.selectedCourseID
+        'QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh',
+        this.selectedUserID
       )
       .subscribe((result) => {
-        this.unregisterUserList = result;
+        this.unregisterCourseList = result;
       });
   }
   registerCourse(course: any) {
-    this.registerData.taiKhoan = course.taiKhoan;
-    this.registerData.maKhoaHoc = this.selectedCourseID.maKhoaHoc;
+    this.registerData.maKhoaHoc = course.maKhoaHoc;
+    this.registerData.taiKhoan = this.selectedUserID.taiKhoan;
     this.data
       .postN('QuanLyKhoaHoc/GhiDanhKhoaHoc', this.registerData)
       .subscribe((result) => {
@@ -53,9 +53,9 @@ export class ModalGhiDanhNguoiDungComponent implements OnInit {
       });
   }
 
-  approveUser(id: any) {
-    this.registerData.taiKhoan = id;
-    this.registerData.maKhoaHoc = this.selectedCourseID.maKhoaHoc;
+  approveCourse(id: any) {
+    this.registerData.maKhoaHoc = id;
+    this.registerData.taiKhoan = this.selectedUserID.taiKhoan;
     this.data
       .postN('QuanLyKhoaHoc/GhiDanhKhoaHoc', this.registerData)
       .subscribe(
@@ -70,27 +70,27 @@ export class ModalGhiDanhNguoiDungComponent implements OnInit {
       );
   }
 
-  getWaitingApprovalUserList() {
+  getWaitingApprovalCourseList() {
     this.data
       .post(
-        'QuanLyNguoiDung/LayDanhSachHocVienChoXetDuyet',
-        this.selectedCourseID
+        'QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet',
+        this.selectedUserID
       )
       .subscribe((result) => {
-        this.waitingApprovalUserList = result;
+        this.waitingApprovalCourseList = result;
       });
   }
-  getApprovedUserList() {
+  getApprovedCourseList() {
     this.data
-      .post('QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc', this.selectedCourseID)
+      .post('QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet', this.selectedUserID)
       .subscribe((result) => {
         this.approvedUserList = result;
       });
   }
 
-  unApproveUser(id: any) {
+  unApproveCourse(id: any) {
     this.unRegisterData.taiKhoan = id;
-    this.unRegisterData.maKhoaHoc = this.selectedCourseID.maKhoaHoc;
+    this.unRegisterData.maKhoaHoc = this.selectedUserID.maKhoaHoc;
     this.data
       .postN('QuanLyKhoaHoc/HuyGhiDanh', this.unRegisterData)
       .subscribe((result) => {
