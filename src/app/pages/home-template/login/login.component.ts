@@ -15,17 +15,22 @@ export class LoginComponent implements OnInit {
 
   login(user: any) {
     console.log('đã click');
-    this.data.post(`QuanLyNguoiDung/DangNhap`, user).subscribe((result) => {
-      console.log(result);
-      if (result.maLoaiNguoiDung === 'GV') {
-        //Luu trang thai xuong LocalStorage
-        localStorage.setItem('UserAdmin', JSON.stringify(result));
+    this.data.post(`QuanLyNguoiDung/DangNhap`, user).subscribe(
+      (result) => {
+        console.log(result);
+        if (result.maLoaiNguoiDung === 'GV') {
+          //Luu trang thai xuong LocalStorage
+          localStorage.setItem('UserAdmin', JSON.stringify(result));
 
-        //chuyen huong toi trang dashboard
-        this.router.navigate(['/admin/dashboard']);
-      } else {
-        alert('Tài khoản không có quyền truy cập');
+          //chuyen huong toi trang dashboard
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          alert('Tài khoản không có quyền truy cập');
+        }
+      },
+      (err) => {
+        alert(err.error);
       }
-    });
+    );
   }
 }

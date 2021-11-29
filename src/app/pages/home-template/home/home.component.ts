@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   getHomeCourse() {
     this.subListCourse = this.data
       .get(
-        '/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=1&pageSize=8&MaNhom=GP09'
+        '/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=1&pageSize=8&MaNhom=GP01'
       )
       .subscribe((result: any) => {
         console.log('result', result.items);
