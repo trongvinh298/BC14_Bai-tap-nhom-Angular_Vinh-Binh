@@ -24,8 +24,14 @@ export class LoginComponent implements OnInit {
 
           //chuyen huong toi trang dashboard
           this.router.navigate(['/admin/dashboard']);
+        } else if (result.maLoaiNguoiDung === 'HV') {
+          //Luu trang thai xuong LocalStorage
+          localStorage.setItem('UserStudent', JSON.stringify(result));
+          localStorage.setItem('UserId', JSON.stringify(user));
+          //chuyen huong toi trang user
+          this.router.navigate([`/user/${result.taiKhoan}`]);
         } else {
-          alert('Tài khoản không có quyền truy cập');
+          alert('Không đúng tên đăng nhập hoặc mật khẩu');
         }
       },
       (err) => {
