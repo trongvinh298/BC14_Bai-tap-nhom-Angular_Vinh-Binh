@@ -1,0 +1,51 @@
+<div class="text-primary pt-3 mx-auto w-50 text-align-center">
+  <h3>Thông tin học viên</h3>
+</div>
+<div class="user__info d-flex justify-content-between py-3">
+  <div class="user__left">
+    <table class="table table-borderless table-hover table-responsive">
+      <tbody>
+        <tr>
+          <td scope="row"></td>
+          <td>Họ Tên</td>
+          <td>
+            <div>{{ user.hoTen }}</div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row"></td>
+          <td>Email</td>
+          <td>
+            <div>{{ user.email }}</div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row"></td>
+          <td>Số điện thoại</td>
+          <td>
+            <div>{{ user.soDT }}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="user__right">
+    <table class="table table-borderless table-responsive">
+      <tbody>
+        <tr>
+          <td>Tài khoản</td>
+          <td>
+            <div>{{ user.taiKhoan }}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <button class="btn btn-danger">Cập nhật tài khoản</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
